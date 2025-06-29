@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
 public class CodingProblemsEasyCollection2 {
 
     public static void main(String[] args) {
@@ -35,6 +39,11 @@ public class CodingProblemsEasyCollection2 {
 //        printSquareStar(2);
 //        printSquareStar(5);
 //        printSquareStar(8);
+
+        //Test cases for 19 and 20
+//        int[] testArray = getIntegers(5);
+//        printArray(testArray);
+//        System.out.println(Arrays.toString(sortArray(testArray)));
 
     }
 
@@ -133,6 +142,61 @@ public class CodingProblemsEasyCollection2 {
                 System.out.println();
             }
         }
+    }
+
+    //17. Method to sort array in descending order using arrays.sort
+    public static int[] reverseArray(int[] array) {
+        Arrays.sort(array);
+        for(int i = 0; i < array.length / 2; i++ ) {
+            int temp = array[i];
+            array[i] = array[array.length - 1 - i];
+            array[array.length -1 - i] = temp;
+        }
+        return array;
+    }
+
+    //18. method to create an array filled with random numbers
+    public static int[] randomArray(int len) {
+        int[] array = new int[len];
+        Random random = new Random();
+        for(int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt(100);
+        }
+        return array;
+    }
+
+    //19. Method to create an array from user input
+    public static int[] getIntegers(int len) {
+        int[] array = new int[len];
+        Scanner scanner = new Scanner(System.in);
+        for(int i = 0; i < array.length; i++) {
+            System.out.println("Enter array element " +i + ":");
+            array[i] = scanner.nextInt();
+        }
+        return array;
+    }
+
+    public static void printArray(int[] array) {
+        for( int i = 0; i < array.length; i++) {
+            System.out.println("Element " + i + " contents " + array[i]);
+        }
+    }
+
+    //20. Method to sort array in descending order without using arrays.sort
+    public static int[] sortArray(int[] array) {
+        boolean flag = true;
+        while (flag) {
+            flag = false;
+            for(int i = 0; i < array.length - 1; i++) {
+                if(array[i] < array[i+1]) {
+                    int temp = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = temp;
+                    flag = true;
+                }
+            }
+        }
+        return array;
     }
 
 }
